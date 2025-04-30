@@ -64,7 +64,7 @@
       margin: 2px 0;
     }
 
-    #barcode-canvas {
+    #barcode-canvas, #barcode-svg {
       position: absolute;
       top: 165px;
       right: 10px;
@@ -89,7 +89,7 @@
 <h2>Stingy Men Association ID Generator</h2>
 
 <div class="form-group">
-  <label>Upload Your Photo</label>
+  <label>Upload Profile Photo</label>
   <input type="file" id="logoInput">
 </div>
 <div class="form-group">
@@ -102,10 +102,10 @@
 </div>
 <div class="form-group">
   <label>ID Number</label>
-  <input type="text" id="idInput" min="8">
+  <input type="text" id="idInput">
 </div>
 <div class="form-group">
-  <label>Level</label>
+  <label>Program</label>
   <input type="text" id="branchInput">
 </div>
 <div class="form-group">
@@ -118,7 +118,7 @@
 </div>
 
 <div id="card-preview">
-  <img id="logo" src="" alt="Logo">
+  <img id="logo" src="" alt="Profile">
   <p id="association">STINGY MEN ASSOCIATION OF MZUNI</p>
   <p id="motto">MOTTO: Let me see what I can.</p>  
   <p id="id-card">IDENTIFICATION CARD</p>
@@ -127,6 +127,7 @@
   <p class="info" id="card-branch"></p>
   <p class="info" id="card-position"></p>
   <p class="info" id="card-expiry"></p>
+  <svg id="barcode-svg" style="display: none;"></svg>
   <canvas id="barcode-canvas"></canvas>
 </div>
 
@@ -155,8 +156,8 @@
   const cardBranch = document.getElementById('card-branch');
   const cardPosition = document.getElementById('card-position');
   const cardExpiry = document.getElementById('card-expiry');
+  const barcodeSvg = document.getElementById('barcode-svg');
   const barcodeCanvas = document.getElementById('barcode-canvas');
-  
   const cardPreview = document.getElementById('card-preview');
 
   logoInput.addEventListener('change', e => {
@@ -185,10 +186,10 @@
 
   function updateCard() {
     const idVal = idInput.value || '0000';
-    cardName.textContent = 'Name: ' + nameInput.value;
-    cardID.textContent = 'ID: ' + idVal;
-    cardBranch.textContent = 'Branch: ' + branchInput.value;
-    cardPosition.textContent = 'Position: ' + positionInput.value;
+    cardName.textContent = 'NAME: ' + nameInput.value;
+    cardID.textContent = 'ID NUMBER: ' + idVal;
+    cardBranch.textContent = 'PROGRAM: ' + branchInput.value;
+    cardPosition.textContent = 'POSITION: ' + positionInput.value;
     cardExpiry.textContent = expiryInput.value ? 'Expires: ' + expiryInput.value : '';
 
     // Generate barcode in hidden SVG
