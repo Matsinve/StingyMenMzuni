@@ -128,7 +128,7 @@
   <p class="info" id="card-position"></p>
   <p class="info" id="card-expiry"></p>
   <svg id="barcode-svg" style="display: none;"></svg>
-  <canvas id="barcode-canvas"></canvas>
+  
 </div>
 
 <div>
@@ -157,7 +157,6 @@
   const cardPosition = document.getElementById('card-position');
   const cardExpiry = document.getElementById('card-expiry');
   const barcodeSvg = document.getElementById('barcode-svg');
-  const barcodeCanvas = document.getElementById('barcode-canvas');
   const cardPreview = document.getElementById('card-preview');
 
   logoInput.addEventListener('change', e => {
